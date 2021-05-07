@@ -1,0 +1,24 @@
+
+<h1>Update 2FA Method</h1>
+
+<s:form action="/members/index">
+
+<p>You may update your two factor authentication profile below.  
+Your current 2FA type is <b>~user.two_factor_type~</b> and current frequency is <b>~user.two_factor_frequency~</b></p>
+
+<s:form_table>
+    <s:ft_select name="2fa_type" label="2FA Method">
+        <option value="none">Disabled</option>
+        <option value="email">E-Mail</option>
+        <option value="email_otp">E-Mail via OTP</option>
+        <option value="phone">Phone / SMS</option>
+    </s:ft_select>
+
+    <s:ft_select name="2fa_frequency" label="Frequency">
+        <option value="none">Never</option>
+        <option value="always">Every login</option>
+        <option value="new_device">When new device is detected</option>
+    </s:ft_select>
+    <s:ft_submit value="update_2fa" label="Update 2FA Method">
+</s:form_table>
+

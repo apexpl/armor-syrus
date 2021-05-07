@@ -1,0 +1,15 @@
+
+<h1>Authentication Required</h1>
+
+<p>Authentication is required to complete this action.  Please check your e-mail at <b>~user.email~</b> and enter the confirmation code within below:</p>
+
+<s:form action="/members/verify_2fa">
+<input type="hidden" name="type" value="email_otp">
+
+<s:form_table>
+    <s:ft_textbox name="code" label="Confirmation Code">
+    <s:ft_submit value="confirm" label="Confirm Code">
+</s:form_table>
+
+
+

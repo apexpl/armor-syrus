@@ -1,0 +1,12 @@
+
+<h1>Verify E-Mail</h1>
+
+<s:form>
+
+<s:if ~user.email_verified~ == 1>
+    <p>Your e-mail address <b>~user.email~</b> is already verified.  If you wish to update your e-mail address, please <a href="/members/update_email">click here</a>.</p>
+<s:else>
+    <p>An e-mail was dispatched to <b>~user.email~</b>.  Please click on the link within the e-mail to verify your address.  If you did not receive the e-mail, you may resend it by clicking below.</p>
+    <center><s:submit value="resend" label="Resent E-Mail Verification"></center>
+</s:if>
+

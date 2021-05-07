@@ -1,0 +1,19 @@
+
+<h1>Verify Phone</h1>
+
+<s:form>
+
+<s:if ~user.phone_verified~ == 1>
+    <p>Your phone number <b>~user.phone_formatted~</b> is already verified.  If you wish to update your phone number, you may do so by <a href="/members/update_phone">clicking here</a>.</p>
+<s:else>
+    <p>A six digit confirmation code has been sent to <b>~user.phone_formatted~</b>.  Please enter the code in the below textbox.  If you did not receive the code, you may resend it by pressing the below button.</p>
+
+    <s:form_table>
+        <s:ft_textbox name="code" label="Confirmation Code">
+        <tr><td colspan="2" align="center">
+        <s:submit value="confirm" label="Confirm Code"> 
+        <s:submit value="resend" label="Resend Confirmation">
+    </td></tr></s:form_table>
+
+</s:if>
+

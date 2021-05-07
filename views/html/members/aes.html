@@ -1,0 +1,37 @@
+
+<h1>Encrypt / Decrypt Data</h1>
+
+<s:form>
+
+<p>Below you may test the AES encryp / decrypt functionality of Armor.  Every user automatically has a 4096 bit RSA keypair generated upon creation, and all data encryptede to your account is encrypted to your personal RSA key.  
+This segregates and helps protect the encrypted data, as if an attacker ever manages to access the database, they will not have full access to all encrypted data since it's all encrypted to each individual user's RSA key.</p>
+
+<h4>Encrypt Data</h4>
+
+<p>Enter some text below to encrypt it to your account.  It will appear in the table below after encryption.</p>
+
+<s:form_table>
+    <s:ft_textarea name="message">
+    <s:ft_submit value="encrypt" label="Encrypt Data">
+</s:form_table><br />
+
+<h4>Decrypted Data</h4>
+
+<p>The below table lists all encrypted data assigned to your account.</p>
+
+<s:data_table><thead><tr>
+    <th>Data ID#</th>
+    <th>Decrypted</th>
+    <th>Encrypted</th>
+</tr></thead>
+
+<tbody><s:foreach name="encdata">
+<tr>
+    <td valign="top">~encdata.id~</td>
+    <td valign="top">~encdata.decrypted~</td>
+    <td valign="top">~encdata.encrypted~</td>
+</tr>
+</s:foreach>
+</s:data_table><br />
+
+

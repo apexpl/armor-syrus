@@ -1,0 +1,42 @@
+
+<h1>Welcome ~user.username~</h1>
+
+<p>Welcome to the example member's area.  You may explore various Armor functionality by using the links below:</p>
+
+<h4>Verification</h4>
+<ul>
+    <s:if ~user.email_verified~ == 1>
+        <li>Your e-mail address <b>~user.email~</b> is verified.</li>
+    <s:else>
+        <li>Your e-mail address <b>~user.email~</b> has not been verified.  <a href="/members/verify_email">Verify Now</a></li>
+    </s:if>
+
+    <s:if ~user.phone_verified~ == 1>
+        <li>Your phone number <b>~user.phone_formatted~</b> is verified.</li>
+    <s:else>
+        <li>Your phone number <b>~user.phone_formatted~</b> has not been verified.  <a href="/members/verify_phone">Verify Now</a></li>
+    </s:if>
+</ul><br />
+
+
+<h4>Account</h4>
+<ul>
+    <li><a href="/members/update_password">Update Password</a></li>
+    <li>Your e-mail address is <b>~user.email~</b>.  <a href="/members/update_email">Update Now</a>.</li>
+    <li>Your phone number is <b>~user.phone_formatted~</b>.  <a href="/members/update_phone">Update Now</a>.</li>
+    <li>Your 2FA type is <b>~user.two_factor_type~</b> and frequency is <b>~user.two_factor_frequency~</b>.  <a href="/members/update_2fa">Update Now</a>.</li>
+</ul><br />
+
+<h4>Additional</h4>
+<ul>
+    <li><a href="/members/aes">Encrypt / Decrypt Data</a></li>
+    <li><a href="/members/twofactor">Two Factor Request</a></li>
+    <li><a href="/members/websocket">Web Socket Chat</a></li>
+</ul><br />
+
+
+
+
+
+
+

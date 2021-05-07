@@ -1,0 +1,84 @@
+
+
+<script type="text/javascript">
+
+    var wsConn = new WebSocket('ws://127.0.0.1:4863');
+    wsConn.onopen = function(e) {
+        wsConn.send('[{"action":"authenticate","token":"' + getCookie('armor_sid_user') + '"},{"action":"join_channel","channel_name":"example","visibility":"public"}]');
+    }
+
+    wsConn.onmessage = function(e) {
+        var json = JSON.parse(e.data);
+        var action = '';
+
+        // Check for error
+        if (json.status && json.status == 'error') { 
+            alert("WebSocket Error: " + json.message);
+            return;
+        }
+
+        // Get action
+        if (json.data && json.data[0] && json.data[0].action) { 
+            action = json.data[0].action;
+        }
+
+        // New message
+        if (action == 'new_message') { 
+            var tbl = document.getElementById('tblChat');
+            var row = tbl.insertRow();
+            var cell = row.insertCell(0);
+            cell.innerHTML = json.data[0].message;
+        }
+    }
+
+    function sendMessage() { 
+        var msg = document.forms[0].message.value;
+        //msg = msg.replace('"', "\\\"");
+        wsConn.send('[{"action":"message_channel","channel_name":"example","message":"' + msg + '"}]');
+    }
+
+    function getCookie(cname) {
+
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+</script>
+
+
+<h1>Web Socket Chat</h1>
+
+<s:form>
+
+<p>Below is an example of the web socket server included with the <a href="https://github.com/apexpl/mercury" target="_blank">Mercury package</a> which includes integration with Armor for authentication.  Below is a small chat application that all authenticated users are connected to.  Feel free to login again under a different account with a new browser window, and you will see both of your accounts here.</p>
+
+<h4>Chat Contents</h4>
+
+<table border="0" cellspacing="0" cellpadding="5" background="#ffffff" width="90%" style="margin-left: 20px;">
+<thead><tr>
+    <th>Message</th>
+</tr></thead>
+
+<tbody id="tblChat"></tbody></table><br />
+
+<s:form_table><tr><td>
+    Message: <s:textbox name="message"> 
+    <a href="javascript:sendMessage();" class="btn btn-primary btn-lg">Send</a>
+</td></tr></s:form_table>
+
+
+
+
+

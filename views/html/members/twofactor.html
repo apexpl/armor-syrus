@@ -1,0 +1,17 @@
+
+<h1>Two Factor Request</h1>
+
+<s:form action="/members/twofactor2">
+
+<p>You may test the 2FA functionality by entering any desired message in the below form.  An e-mail will be dispatched to you at <b>~user.email`</b>, and upon clicking the link you will be brought back to this page which will display your previous message submitted.</p>
+
+<s:form_table>
+    <s:ft_select name="2fa_type" label="2FA Type">
+        <option value="email">E-Mail</option>
+        <option value="email_otp">E-Mail via One-Time Code</option>
+        <option value="phone">Phone  / SMS</option>
+    </s:ft_select>
+    <s:ft_textbox name="message">
+    <s:ft_submit value="init" label="Start 2FA Request">
+</s:form_table>
+

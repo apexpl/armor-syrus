@@ -1,0 +1,18 @@
+
+<h1>Registration Successful</h1>
+
+<p>Thank you, and your account with the username <b>~user.username~</b> has been successfully registered.  Please check your e-mail account <b>~user.email~</b> to verify your e-mail address.</p>
+
+
+<s:if ~user.has_phone~ == 1>
+    <h4>Verify Your Phone</h4>
+
+    <s:form action="/members/verify_phone">
+    <p>A text message has been sent to the phone number <b>~user.phone_formatted~</b>.  Please enter the verification code in the below textbox.</p>
+
+    <s:form_table>
+        <s:ft_textbox name="phone_code" width="120px" label="Verification Code">
+        <s:ft_submit value="confirm_phone" label="Confirm Phone Number">
+    </s:form_table>
+</s:if>
+

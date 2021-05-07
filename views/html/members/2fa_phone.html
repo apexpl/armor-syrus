@@ -1,0 +1,15 @@
+
+<h1>Authentication Required</h1>
+
+<p>Authentication is required to complete this action.  An SMS message has been sent to the phone number <b>~user.phone_formatted~</b>, please enter the confirmation code below:</p>
+
+<s:form action="/members/verify_2fa">
+<input type="hidden" name="type" value="phone">
+
+<s:form_table>
+    <s:ft_textbox name="code" label="Confirmation Code">
+    <s:ft_submit value="confirm" label="Confirm Code">
+</s:form_table>
+
+
+

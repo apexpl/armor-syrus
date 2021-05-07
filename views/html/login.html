@@ -1,0 +1,22 @@
+
+<h1>Login</h1>
+
+<p>You may login to your account below.</p>
+
+<s:form>
+
+<s:form_table>
+    <s:ft_textbox name="username" value="~cookie_username~">
+    <s:ft_textbox name="password" type="password">
+    <tr>
+        <td align="left">
+            <input type="checkbox" name="remember_me" value="1"> Remember Me
+        </td>
+        <td align="right">
+            <a href="/reset_password">Forgot Password?</a>
+        </td>
+    </tr>
+    <s:ft_submit value="login" label="Login now">
+</s:form_table>
+
+
